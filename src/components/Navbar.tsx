@@ -12,7 +12,7 @@ export default function Navbar() {
           <ul>
             <li>
               <Link
-                className="p-2 bg-[#FF3366] rounded-lg"
+                className="p-2 bg-[#FF3366] hover:bg-[#ff3366c9] rounded-lg"
                 to="/landmarks/create"
               >
                 Create
