@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 import type { LandmarkFormData } from '../types'
+import { createLandmark } from '../services/landmarkServices'
 
 export default function LandmarkForm() {
   const initialValues: LandmarkFormData = {
@@ -14,8 +15,14 @@ export default function LandmarkForm() {
     formState: { errors },
   } = useForm({ defaultValues: initialValues })
 
-  const handleCreate = (formData: LandmarkFormData) => {
-    console.log(formData)
+  const handleCreate = async (formData: LandmarkFormData) => {
+    const data = await createLandmark({
+      ...formData,
+      latitude: +formData.latitude,
+      longitude: +formData.longitude,
+    })
+
+    console.log(data)
   }
 
   return (
