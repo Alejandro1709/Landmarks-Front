@@ -1,3 +1,5 @@
+import Map from '../components/Map'
+
 export default function IndexPage() {
-  return <div>IndexPage</div>
+  return <Map />
 }
