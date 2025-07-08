@@ -1,8 +1,12 @@
 import { useForm } from 'react-hook-form'
 import type { LandmarkFormData } from '../types'
 import { createLandmark } from '../services/landmarkServices'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 export default function LandmarkForm() {
+  const navigate = useNavigate()
+
   const initialValues: LandmarkFormData = {
     title: '',
     latitude: 0,
@@ -13,6 +17,7 @@ export default function LandmarkForm() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({ defaultValues: initialValues })
 
   const handleCreate = async (formData: LandmarkFormData) => {
@@ -22,7 +27,11 @@ export default function LandmarkForm() {
       longitude: +formData.longitude,
     })
 
-    console.log(data)
+    toast.success(data.message)
+
+    reset()
+
+    navigate('/')
   }
 
   return (
