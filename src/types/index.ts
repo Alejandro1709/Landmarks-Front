@@ -7,7 +7,11 @@ export const landmarkSchema = z.object({
   longitude: z.number(),
 })
 
+export const LandmarksSchema = z.array(landmarkSchema)
+
 export type Landmark = z.infer<typeof landmarkSchema>
+
+export type Landmarks = z.infer<typeof LandmarksSchema>
 
 export type LandmarkFormData = Pick<
   Landmark,
