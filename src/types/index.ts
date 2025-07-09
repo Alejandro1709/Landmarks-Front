@@ -3,8 +3,9 @@ import { z } from 'zod'
 export const landmarkSchema = z.object({
   _id: z.string(),
   title: z.string(),
-  latitude: z.number(),
-  longitude: z.number(),
+  image: z.string(),
+  latitude: z.string(),
+  longitude: z.string(),
 })
 
 export const LandmarksSchema = z.array(landmarkSchema)
@@ -15,5 +16,5 @@ export type Landmarks = z.infer<typeof LandmarksSchema>
 
 export type LandmarkFormData = Pick<
   Landmark,
-  'title' | 'latitude' | 'longitude'
+  'title' | 'image' | 'latitude' | 'longitude'
 >

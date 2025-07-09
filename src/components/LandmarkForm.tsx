@@ -9,8 +9,9 @@ export default function LandmarkForm() {
 
   const initialValues: LandmarkFormData = {
     title: '',
-    latitude: 0,
-    longitude: 0,
+    image: '',
+    latitude: '0',
+    longitude: '0',
   }
 
   const {
@@ -21,11 +22,13 @@ export default function LandmarkForm() {
   } = useForm({ defaultValues: initialValues })
 
   const handleCreate = (formData: LandmarkFormData) => {
-    createLandmark({
-      ...formData,
-      latitude: +formData.latitude,
-      longitude: +formData.longitude,
-    })
+    const form = new FormData()
+    form.append('title', formData.title)
+    form.append('latitude', formData.latitude)
+    form.append('longitude', formData.longitude)
+    form.append('image', formData.image[0])
+
+    createLandmark(form)
       .then((data) => {
         toast.success(data.message)
 
@@ -57,6 +60,21 @@ export default function LandmarkForm() {
         />
         {errors.title ? (
           <p className="text-red-400">{errors.title.message}</p>
+        ) : null}
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="image">Image:</label>
+        <input
+          className="bg-white border p-2 rounded-md"
+          type="file"
+          id="image"
+          {...register('image', {
+            required: 'An image is required',
+          })}
+        />
+        {errors.image ? (
+          <p className="text-red-400">{errors.image.message}</p>
         ) : null}
       </div>
 

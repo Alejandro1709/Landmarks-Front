@@ -34,12 +34,12 @@ export default function LandmarkMap() {
         {landmarks.length > 0
           ? landmarks.map((lm) => (
               <Marker
-                longitude={lm.longitude}
-                latitude={lm.latitude}
+                longitude={+lm.longitude}
+                latitude={+lm.latitude}
                 key={lm._id}
               >
                 <div className="w-fit bg-white rounded-md shadow-md overflow-hidden">
-                  {/* <img
+                  <img
                     src={lm.image}
                     alt={lm.title}
                     style={{
@@ -47,7 +47,7 @@ export default function LandmarkMap() {
                       height: '120px',
                       objectFit: 'cover',
                     }}
-                  /> */}
+                  />
                   <div className="p-4">
                     <h4 style={{ margin: 0 }}>{lm.title}</h4>
                   </div>
