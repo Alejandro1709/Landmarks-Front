@@ -1,5 +1,5 @@
-import Map from '../components/Map'
+import LandmarkMap from '../components/LandmarkMap'
 
 export default function IndexPage() {
-  return <Map />
+  return <LandmarkMap />
 }
