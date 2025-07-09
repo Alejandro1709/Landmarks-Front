@@ -3,7 +3,7 @@ import axios, { isAxiosError } from 'axios'
 export const getLandmarks = async () => {
   try {
     const { data } = await axios.get(
-      'https://landmarks-api-production.up.railway.app/api/v1/landmarks'
+      `${import.meta.env.VITE_API_URL}/api/v1/landmarks`
     )
 
     return data
@@ -17,7 +17,7 @@ export const getLandmarks = async () => {
 export const createLandmark = async (formData: FormData) => {
   try {
     const { data } = await axios.post(
-      'https://landmarks-api-production.up.railway.app/api/v1/landmarks',
+      `${import.meta.env.VITE_API_URL}/api/v1/landmarks`,
       formData
     )
 
