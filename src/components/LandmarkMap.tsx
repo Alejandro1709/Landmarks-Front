@@ -31,20 +31,30 @@ export default function LandmarkMap() {
         onMove={(e) => setViewState(e.viewState)}
         mapStyle="mapbox://styles/mapbox/streets-v11"
       >
-        {landmarks.map((lm) => (
-          <Marker longitude={lm.longitude} latitude={lm.latitude} key={lm._id}>
-            <div className="w-[140px] bg-white rounded-md shadow-md overflow-hidden">
-              <img
-                src={lm.image}
-                alt={lm.title}
-                style={{ width: '100%', height: '120px', objectFit: 'cover' }}
-              />
-              <div className="p-4">
-                <h4 style={{ margin: 0 }}>{lm.title}</h4>
-              </div>
-            </div>
-          </Marker>
-        ))}
+        {landmarks.length > 0
+          ? landmarks.map((lm) => (
+              <Marker
+                longitude={lm.longitude}
+                latitude={lm.latitude}
+                key={lm._id}
+              >
+                <div className="w-[140px] bg-white rounded-md shadow-md overflow-hidden">
+                  <img
+                    src={lm.image}
+                    alt={lm.title}
+                    style={{
+                      width: '100%',
+                      height: '120px',
+                      objectFit: 'cover',
+                    }}
+                  />
+                  <div className="p-4">
+                    <h4 style={{ margin: 0 }}>{lm.title}</h4>
+                  </div>
+                </div>
+              </Marker>
+            ))
+          : null}
       </Map>
     </div>
   )
