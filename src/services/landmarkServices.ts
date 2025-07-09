@@ -1,9 +1,10 @@
-import { isAxiosError } from 'axios'
-import api from '../lib/axios'
+import axios, { isAxiosError } from 'axios'
 
 export const getLandmarks = async () => {
   try {
-    const { data } = await api.get('/api/v1/landmarks')
+    const { data } = await axios.get(
+      'https://landmarks-api-production.up.railway.app/api/v1/landmarks'
+    )
 
     return data
   } catch (error) {
@@ -15,7 +16,10 @@ export const getLandmarks = async () => {
 
 export const createLandmark = async (formData: FormData) => {
   try {
-    const { data } = await api.post('/api/v1/landmarks', formData)
+    const { data } = await axios.post(
+      'https://landmarks-api-production.up.railway.app/api/v1/landmarks',
+      formData
+    )
 
     return data
   } catch (error) {
